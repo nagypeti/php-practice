@@ -1,6 +1,6 @@
 <?php
 
-function drawPyramid($height)
+function drawPyramidForLoop($height)
 {
     $pyramid = [];
     for ($i = 0; $i < $height; $i++) {
@@ -13,6 +13,20 @@ function drawPyramid($height)
             $line = "{$line}**";
         }
         $pyramid[] = $line;
+    }
+    return $pyramid;
+}
+
+function drawPyramidWhileLoop($height)
+{
+    $counter;
+    $pyramid = array();
+
+    while ($counter < $height) {
+        $space = '&nbsp;' . str_repeat('&nbsp;&nbsp;', $height - $counter);
+        $block = '*' . str_repeat('**', $counter);
+        $pyramid[] = "{$space}{$block}";
+        $counter++;
     }
     return $pyramid;
 }
@@ -37,8 +51,13 @@ if (isset($_GET['height'])) {
         <input type="text" name="height" id="height">
         <button type="submit">Build it!</button>
     </form>
-    <div class="pyramid">
-        <?php foreach (drawPyramid($height) as $item) {?>
+    <div class="pyramidForLoop">
+        <?php foreach (drawPyramidForLoop($height) as $item) {?>
+            <p><?php echo $item ?></p>
+        <?php }?>
+    </div>
+    <div class="pyramidWhileLoop">
+        <?php foreach (drawPyramidWhileLoop($height) as $item) {?>
             <p><?php echo $item ?></p>
         <?php }?>
     </div>

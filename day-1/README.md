@@ -9,7 +9,7 @@ Print the Body mass index (BMI) based on these values
 Write a program that stores 3 sides of a cuboid as variables (doubles)
 The program should write the surface area and volume of the cuboid like:
 
-### [DRAW-PYRAMID](../day-1/drawpyramid.php):
+### [DRAW-PYRAMID](../day-1/drawPyramid.php):
 
 Write a program that reads a number from the standard input, then draws a
 pyramid like this:

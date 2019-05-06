@@ -1,0 +1,6 @@
+// Set the default
+"editor.formatOnSave": false,
+// Enable per-language
+"[php]": {
+    "editor.formatOnSave": true
+}

@@ -1,0 +1,30 @@
+body {
+  margin: 0 20%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table, tr, td {
+  border: 1px solid black;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.delete, .edit {
+  width: 10%;
+  text-align: center;
+}
+
+.task {
+  padding-left: 10px;
+}
+
+tr.thead > *{
+  font-weight: 800;
+}

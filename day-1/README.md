@@ -13,10 +13,12 @@ The program should write the surface area and volume of the cuboid like:
 
 Write a program that reads a number from the standard input, then draws a
 pyramid like this:
+```
     *
    ***
   *****
  *******
+ ```
 The pyramid should have as many lines as the number was
 
 ### [UNIQUE](../day-1/unique.php):

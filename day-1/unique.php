@@ -16,6 +16,7 @@ function unique($array)
     return $temp_array;
 }
 
+echo '<pre>', var_dump($input), '</pre';
 echo '<pre>', var_dump(unique($input)), '</pre';
 
 ?>

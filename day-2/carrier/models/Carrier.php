@@ -21,20 +21,17 @@ class Carrier
 
     public function fill()
     {
+        $this->aircrafts = rsort($this->aircrafts);
+
         foreach ($this->aircrafts as $aircraft) {
             if ($this->ammo <= 0) {
                 throw new Exception('Out of ammo sir!');
             } elseif ($aircraft->isPriority()){
                 $this->ammo = $this->ammo - $aircraft->refill($this->ammo);
-            }
-        }
-        foreach ($this->aircrafts as $aircraft) {
-            if ($this->ammo <= 0) {
-                throw new Exception('Out of ammo sir!');
-            } elseif (!$aircraft->isPriority()) {
+            } else {
                 $this->ammo = $this->ammo - $aircraft->refill($this->ammo);
             }
-        }    
+        }
     }
 
     public function receiveAttack($totalDamage) {

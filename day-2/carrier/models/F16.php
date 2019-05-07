@@ -1,11 +1,18 @@
 <?php
 
+require_once 'classes.php';
+
 class F16 extends Aircraft
 {
 
-    public function __construct($baseDamage = 30, $maxAmmo = 8)
+    public function __construct()
     {
-        parent::__construct($baseDamage, $maxAmmo);
+        parent::__construct(30, 8);
+    }
+
+    public function isPriority()
+    {
+        return false;
     }
 
 }

@@ -1,11 +1,18 @@
 <?php
 
+require_once 'classes.php';
+
 class F35 extends Aircraft
 {
 
-    public function __construct($baseDamage = 50, $maxAmmo = 12)
+    public function __construct()
     {
-        parent::__construct($baseDamage, $maxAmmo);
+        parent::__construct(50, 12);
+    }
+
+    public function isPriority()
+    {
+        return true;
     }
 
 }

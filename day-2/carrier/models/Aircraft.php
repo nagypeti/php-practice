@@ -16,9 +16,13 @@ abstract class Aircraft
 
     abstract public function isPriority();
 
-    public function reFill(int $ammo)
+    public function refill($ammo)
     {
-
+        if ($this->currentAmmo < $this->maxAmmo) {
+            $ammo -= $this->maxAmmo - $this->currentAmmo;
+            $this->currentAmmo = $this->maxAmmo;
+        }
+        return $ammo;
     }
 
     public function fight()

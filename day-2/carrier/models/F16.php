@@ -1,7 +1,5 @@
 <?php
 
-require_once 'classes.php';
-
 class F16 extends Aircraft
 {
 

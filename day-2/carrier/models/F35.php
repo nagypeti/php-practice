@@ -1,7 +1,5 @@
 <?php
 
-require_once 'classes.php';
-
 class F35 extends Aircraft
 {
 

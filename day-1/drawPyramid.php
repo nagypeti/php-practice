@@ -1,39 +1,41 @@
 <?php
 
-function drawPyramidForLoop($height)
-{
-    $pyramid = [];
-    for ($i = 0; $i < $height; $i++) {
-        $line = '&nbsp;';
-        for ($j = 0; $j < $height - $i; $j++) {
-            $line = "{$line}&nbsp;&nbsp;";
+    // Task solved using for loops with basic operations, using string concatenation
+    function drawPyramidForLoop($height)
+    {
+        $pyramid = [];
+        for ($i = 0; $i < $height; $i++) {
+            $line = '&nbsp;';
+            for ($j = 0; $j < $height - $i; $j++) {
+                $line = "{$line}&nbsp;&nbsp;";
+            }
+            $line = "{$line}*";
+            for ($k = 0; $k < $i; $k++) {
+                $line = "{$line}**";
+            }
+            $pyramid[] = $line;
         }
-        $line = "{$line}*";
-        for ($k = 0; $k < $i; $k++) {
-            $line = "{$line}**";
+        return $pyramid;
+    }
+
+    // Task solved with while loop and built in str_repeat function
+    function drawPyramidWhileLoop($height)
+    {
+        $counter = 0;
+        $pyramid = array();
+
+        while ($counter < $height) {
+            $space = '&nbsp;' . str_repeat('&nbsp;&nbsp;', $height - $counter);
+            $block = '*' . str_repeat('**', $counter);
+            $pyramid[] = "{$space}{$block}";
+            $counter++;
         }
-        $pyramid[] = $line;
+        return $pyramid;
     }
-    return $pyramid;
-}
 
-function drawPyramidWhileLoop($height)
-{
-    $counter;
-    $pyramid = array();
-
-    while ($counter < $height) {
-        $space = '&nbsp;' . str_repeat('&nbsp;&nbsp;', $height - $counter);
-        $block = '*' . str_repeat('**', $counter);
-        $pyramid[] = "{$space}{$block}";
-        $counter++;
+    if (isset($_GET['height'])) {
+        $height = $_GET['height'];
     }
-    return $pyramid;
-}
-
-if (isset($_GET['height'])) {
-    $height = $_GET['height'];
-}
 
 ?>
 
@@ -52,14 +54,14 @@ if (isset($_GET['height'])) {
         <button type="submit">Build it!</button>
     </form>
     <div class="pyramidForLoop">
-        <?php foreach (drawPyramidForLoop($height) as $item) {?>
-            <p><?php echo $item ?></p>
-        <?php }?>
+        <?php foreach (drawPyramidForLoop($height) as $item) : ?>
+            <p><?= $item ?></p>
+        <?php endforeach; ?>
     </div>
     <div class="pyramidWhileLoop">
-        <?php foreach (drawPyramidWhileLoop($height) as $item) {?>
-            <p><?php echo $item ?></p>
-        <?php }?>
+        <?php foreach (drawPyramidWhileLoop($height) as $item) : ?>
+            <p><?= $item ?></p>
+        <?php endforeach; ?>
     </div>
 </body>
 </html>

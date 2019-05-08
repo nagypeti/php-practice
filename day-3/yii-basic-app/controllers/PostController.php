@@ -26,8 +26,11 @@ class PostController extends Controller
         $data = \Yii::$app->request->post();
         $post = new Post();
         $post->attributes = $data['PostForm'];
-        $post->save();
-        return $this->redirect('index');
+        if ($post->save()) {
+            return $this->redirect('index');
+        } else {
+            var_dump($post->errors);
+        }
     }
 
     public function actionDelete($id)
@@ -58,8 +61,11 @@ class PostController extends Controller
             ->where(['=', 'id', $id])
             ->one();
         $post->attributes = $data['PostForm'];
-        $post->save();
-        return $this->redirect('index');
+        if ($post->save()) {
+            return $this->redirect('index');
+        } else {
+            var_dump($post->errors);
+        }
     }
 
     public function actionUpvote($id)

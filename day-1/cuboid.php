@@ -1,17 +1,17 @@
 <?php
 
-$calcVolume = function($length, $width, $height) {
-    return ($length * $width * $height);
-};
+    $calcVolume = function($length, $width, $height) {
+        return ($length * $width * $height);
+    };
 
-$calcSurface = function($length, $width, $height) {
-    return (2 * $width * $length) + (2 * $length * $height) + (2* $height * $width);
-};
+    $calcSurface = function($length, $width, $height) {
+        return (2 * $width * $length) + (2 * $length * $height) + (2* $height * $width);
+    };
 
-if(isset($_POST['calculate'])) {
-    $volume = $calcVolume($_POST['length'], $_POST['width'], $_POST['height']);
-    $surface = $calcSurface($_POST['length'], $_POST['width'], $_POST['height']);
-}
+    if(isset($_POST['calculate'])) {
+        $volume = $calcVolume($_POST['length'], $_POST['width'], $_POST['height']);
+        $surface = $calcSurface($_POST['length'], $_POST['width'], $_POST['height']);
+    }
     
 ?>
 
@@ -25,11 +25,11 @@ if(isset($_POST['calculate'])) {
 <body>
     <h1>Calculate the surface and the volume of a cuboid:</h1>
     <?php if(!isset($_POST['calculate'])) { ?>
-        <?php echo "<p>Please provide input!</p>"; ?>
+        <?= "<p>Please provide input!</p>"; ?>
     <?php } ?>
     <?php if(isset($_POST['calculate'])) { ?>
-        <?php echo "<h1>The volume of your cuboid: $volume</h1>"; ?>
-        <?php echo "<h1>The surface of your cuboid: $surface</h1>"; ?>
+        <?= "<h1>The volume of your cuboid: $volume</h1>"; ?>
+        <?= "<h1>The surface of your cuboid: $surface</h1>"; ?>
     <?php } ?>
     <form method="post">
         <label for="length">Length:</label>

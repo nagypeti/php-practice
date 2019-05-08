@@ -3,14 +3,20 @@
 class F35 extends Aircraft
 {
 
+    private $isPriority;
+
     public function __construct()
     {
         parent::__construct(50, 12);
+        $this->isPriority = true;
     }
 
-    public function isPriority()
+    /**
+     * Get the value of isPriority
+     */
+    public function getIsPriority()
     {
-        return true;
+        return $this->isPriority;
     }
 
 }

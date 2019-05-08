@@ -3,14 +3,19 @@
 class F16 extends Aircraft
 {
 
+    private $isPriority;
+
     public function __construct()
     {
         parent::__construct(30, 8);
+        $this->isPriority = false;
     }
 
-    public function isPriority()
+    /**
+     * Get the value of isPriority
+     */
+    public function getIsPriority()
     {
-        return false;
+        return $this->isPriority;
     }
-
 }

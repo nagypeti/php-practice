@@ -11,11 +11,8 @@ class F16 extends Aircraft
         $this->isPriority = false;
     }
 
-    /**
-     * Get the value of isPriority
-     */
-    public function getIsPriority()
-    {
-        return $this->isPriority;
+    public function __get($field){
+        return $this->$field;
     }
+
 }

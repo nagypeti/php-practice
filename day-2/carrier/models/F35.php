@@ -11,12 +11,8 @@ class F35 extends Aircraft
         $this->isPriority = true;
     }
 
-    /**
-     * Get the value of isPriority
-     */
-    public function getIsPriority()
-    {
-        return $this->isPriority;
+    public function __get($field){
+        return $this->$field;
     }
 
 }

@@ -12,6 +12,7 @@ class PostController extends Controller
     public function actionIndex()
     {
         $posts = Post::find()
+            ->orderBy(['likes' => SORT_DESC])
             ->all();
 
         return $this->render('index', [

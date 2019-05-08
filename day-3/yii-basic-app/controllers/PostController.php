@@ -6,19 +6,22 @@ use app\models\Post;
 use app\models\PostForm;
 use yii\web\Controller;
 
-class PostController extends Controller {
+class PostController extends Controller
+{
 
-    public function actionIndex() {
+    public function actionIndex()
+    {
         $posts = Post::find()
             ->all();
 
         return $this->render('index', [
             'posts' => $posts,
-            'postForm' => new PostForm()
+            'postForm' => new PostForm(),
         ]);
     }
 
-    public function actionAdd() {
+    public function actionAdd()
+    {
         $data = \Yii::$app->request->post();
         $post = new Post();
         $post->attributes = $data['PostForm'];
@@ -26,31 +29,50 @@ class PostController extends Controller {
         return $this->redirect('index');
     }
 
-     public function actionDelete($id) {
+    public function actionDelete($id)
+    {
         $post = Post::findOne($id);
         $post->delete();
         return $this->redirect('index');
     }
 
-    public function actionEdit($id) {
+    public function actionEdit($id)
+    {
         $post = Post::find()
             ->where(['=', 'id', $id])
             ->one();
         return $this->render('edit', [
             'postForm' => new PostForm([
                 'title' => $post->title,
-                'content' => $post->content
+                'content' => $post->content,
             ]),
-            'id' => $id
+            'id' => $id,
         ]);
     }
 
-    public function actionUpdate($id) {
+    public function actionUpdate($id)
+    {
         $data = \Yii::$app->request->post();
         $post = Post::find()
             ->where(['=', 'id', $id])
             ->one();
         $post->attributes = $data['PostForm'];
+        $post->save();
+        return $this->redirect('index');
+    }
+
+    public function actionUpvote($id)
+    {
+        $post = Post::findOne($id);
+        $post->likes++;
+        $post->save();
+        return $this->redirect('index');
+    }
+
+    public function actionDownvote($id)
+    {
+        $post = Post::findOne($id);
+        $post->likes--;
         $post->save();
         return $this->redirect('index');
     }

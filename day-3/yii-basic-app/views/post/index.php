@@ -2,12 +2,11 @@
 
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
-
     
 ?>
 
 <h1>Trending posts</h1>
-<table class="table">
+<table class="table table-hover">
     <?php foreach ($posts as $post): ?>
         <tr>
             <td><?= Html::encode($post->likes) ?></td>
@@ -17,7 +16,9 @@ use yii\helpers\Html;
             <td>
                 <a href="/post/downvote?id=<?= $post->id ?>"><i class="material-icons">arrow_drop_down</i></a>
             </td>
-            <td><?= Html::encode($post->title) ?></td>
+            <td>
+                <a href="<?= $post->content ?>"><?= Html::encode($post->title) ?></a>
+            </td>
             <td>
                 <a href="/post/edit?id=<?= $post->id ?>"><i class="material-icons">edit</i></a>
             </td>

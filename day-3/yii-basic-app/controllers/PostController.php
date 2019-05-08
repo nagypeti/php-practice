@@ -20,8 +20,15 @@ class PostController extends Controller
             'postForm' => new PostForm(),
         ]);
     }
+    
+    public function actionAdd() 
+    {
+        return $this->render('add', [
+            'postForm' => new PostForm()
+        ]);
+    }
 
-    public function actionAdd()
+    public function actionSave()
     {
         $data = \Yii::$app->request->post();
         $post = new Post();

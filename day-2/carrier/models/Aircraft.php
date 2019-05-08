@@ -1,6 +1,6 @@
 <?php
 
-abstract class Aircraft
+class Aircraft
 {
 
     private $baseDamage;
@@ -14,16 +14,17 @@ abstract class Aircraft
         $this->currentAmmo = 0;
     }
 
-    abstract public function isPriority();
+    public function __get($field)
+    {
+        return $this->$field;
+    }
 
-    public function refill($availableAmmo)
+    public function refill(&$availableAmmo)
     {
         $ammoNeeded = $this->maxAmmo - $this->currentAmmo;
-        if ($availableAmmo <= 0) {
-            throw new Exception('Out of ammo!');
-        } elseif ($ammoNeeded > $availableAmmo) {
+        if ($ammoNeeded > $availableAmmo) {
             $this->currentAmmo += $availableAmmo;
-            $availableAmmo = 0;;
+            $availableAmmo = 0;
         } else {
             $this->currentAmmo += $ammoNeeded;
             $availableAmmo -= $ammoNeeded;
@@ -55,18 +56,4 @@ abstract class Aircraft
 
     }
 
-    public function getBaseDamage()
-    {
-        return $this->baseDamage;
-    }
-
-    public function getMaxAmmo()
-    {
-        return $this->maxAmmo;
-    }
-
-    public function getCurrentAmmo()
-    {
-        return $this->currentAmmo;
-    }
 }

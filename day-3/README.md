@@ -1,5 +1,8 @@
-How to handle in Yii:
-Cross-Site Request Forgery (CSRF) - its built in with form templates.
-Cross-site Scripting (XSS) - Yii helpers, html encode.
+### What to look up:
 
-Dependency injection.
+- Cross-Site Request Forgery (CSRF) - its built in  with ActiveForm class.
+- Cross-site Scripting (XSS) - Yii helpers, html encode.
+- How session is handled in Yii?
+- Yii - Application object
+- Built in user auth.
+- Yii queryBuilder

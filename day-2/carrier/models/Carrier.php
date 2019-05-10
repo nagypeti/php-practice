@@ -9,7 +9,7 @@ class Carrier
 
     public function __construct($ammo = 100, $health = 1000)
     {
-        $this->aircrafts = array();
+        $this->aircrafts = [];
         $this->ammo = $ammo;
         $this->health = $health;
     }
@@ -19,22 +19,37 @@ class Carrier
         $this->aircrafts[] = $aircraft;
     }
 
-    public function fill()
+    public function compareByPriority($a, $b)
     {
-        $this->aircrafts = rsort($this->aircrafts);
-
-        foreach ($this->aircrafts as $aircraft) {
-            if ($this->ammo <= 0) {
-                throw new Exception('Out of ammo sir!');
-            } elseif ($aircraft->isPriority()){
-                $this->ammo = $this->ammo - $aircraft->refill($this->ammo);
-            } else {
-                $this->ammo = $this->ammo - $aircraft->refill($this->ammo);
-            }
+        if ($a->isPriority === $b->isPriority) {
+            return 0;
         }
+
+        if ($a->isPriority) {
+            return -1;
+        }
+        var_dump($a);
+        return 1;
     }
 
-    public function receiveAttack($totalDamage) {
+    public function fill()
+    {
+        usort($this->aircrafts, 'compareByPriority');
+        var_dump($this->aircrafts);
+//        foreach ($this->aircrafts as $aircraft) {
+//            if ($this->ammo <= 0) {
+//                echo 'Out of ammo!';
+//                break;
+//            } elseif ($aircraft->isPriority) {
+//                $this->ammo -= $aircraft->refill($this->ammo);
+//            } else {
+//                $this->ammo -= $aircraft->refill($this->ammo);
+//            }
+//        }
+    }
+
+    public function receiveAttack($damage)
+    {
         $this->health -= $damage;
     }
 
@@ -47,7 +62,7 @@ class Carrier
     {
         $totalDamage = 0;
         foreach ($this->aircrafts as $aircraft) {
-            $totalDamage += $aircraft->getCurrentAmmo() * $aircraft->getBaseDamage();
+            $totalDamage += $aircraft->currentAmmo * $aircraft->baseDamage;
         }
         return $totalDamage;
     }
@@ -58,7 +73,7 @@ class Carrier
             return "It's dead Jim :(";
         } else {
             $statusMessage = "HP: {$this->health} Aircraft count: " . count($this->aircrafts)
-                . ", Ammo Storage: {$this->ammo}, Total damage: " . $this->totalDamage() . "<br>Aircrafts:<br>";
+            . ", Ammo Storage: {$this->ammo}, Total damage: " . $this->totalDamage() . "<br>Aircrafts:<br>";
             foreach ($this->aircrafts as $aircraft) {
                 $statusMessage = $statusMessage . $aircraft->getStatus() . "<br>";
             }
@@ -66,4 +81,8 @@ class Carrier
         return $statusMessage;
     }
 
+    public function __get($field)
+    {
+        return $this->$field;
+    }
 }

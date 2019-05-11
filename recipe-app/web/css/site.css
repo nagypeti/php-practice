@@ -27,6 +27,7 @@ body {
 }
 
 .jumbotron .btn {
+    margin-top: 10%;
     font-size: 21px;
     padding: 14px 24px;
 }

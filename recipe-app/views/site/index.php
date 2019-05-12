@@ -11,6 +11,6 @@ $this->title = 'Yii Recipe Application';
     <div class="body-content">
         <a class="btn btn-lg btn-primary" href="site/login">Login to add recipes</a>
         <p class="btn-divider">or</p>
-        <a class="btn btn-lg btn-success" href="site/recipe">just browse recipes</a>
+        <a class="btn btn-lg btn-success" href="recipe/index">just browse recipes</a>
     </div>
 </div>

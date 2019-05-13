@@ -16,6 +16,6 @@ class Ingredient extends ActiveRecord
     public function getRecipes()
     {
         return $this->hasMany(Recipe::className(), ['id' => 'recipe_id'])
-            ->viaTable('tbl_recipe_ingredient', ['ingredient_id' => 'id']);
+            ->viaTable('xref_recipe_ingredient', ['ingredient_id' => 'id']);
     }
 }

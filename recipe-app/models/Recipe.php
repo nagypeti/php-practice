@@ -8,13 +8,12 @@ class Recipe extends ActiveRecord
 {
     public function rules() {
         return [
-            [['name', 'ingredients', 'description'], 'required'],
-            ['likes', 'default', 'value'=>'0']
+            [['name', 'description'], 'required']
         ];
     }
 
     public function getIngredients() {
         return $this->hasMany(Ingredient::className(), ['id' => 'ingredient_id'])
-            ->viaTable('tbl_recipe_ingredient', ['recipe_id' => 'id']);
+            ->viaTable('xref_recipe_ingredient', ['recipe_id' => 'id']);
     }
 }

@@ -5,7 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-    'name'=>'RecipeBook',
+    'name'=> 'RecipeBook',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -48,6 +48,9 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'recipes' => 'recipe/index',
+                'recipes/<id:\d+>' => 'recipe/showrecipebyid',
+                'recipes/<id:\d+>/edit' => 'recipe/edit',
             ],
         ],
     ],
